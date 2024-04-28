@@ -1,0 +1,82 @@
+name: flutter_material_3_skeleton
+description: This repository houses a robust Flutter framework, primarily featuring a Material Design 3 sample page for immediate implementation. It is enriched with a suite of fundamental utilities frequently employed in Flutter development, offering a comprehensive starting point for your Flutter projects
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  # Core
+  get: any
+  # Resources
+  flutter_gen: ^5.4.0
+  flutter_svg: ^2.0.10+1
+  flutter_native_splash: ^2.3.0
+  # Utils
+  intl: ^0.18.1
+  intl_utils: ^2.8.5
+  logger: ^2.2.0
+  connectivity_plus: ^5.0.0
+  # Components
+  cupertino_icons: ^1.0.2
+  flutter_slidable: ^3.1.0
+  # Data
+  shared_preferences: ^2.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+  build_runner: ^2.4.8
+  flutter_gen_runner: ^5.4.0
+  flutter_launcher_icons:
+    git:
+      url: https://github.com/lux-studio-66/flutter_launcher_icons.git
+      ref: 591cb24
+
+flutter_gen:
+  output: lib/resources/generated/assets
+
+  integrations:
+    flutter_svg: true
+
+  fonts:
+    enabled: true
+
+flutter_intl:
+  enabled: true
+  class_name: Strings
+  main_locale: vi
+  output_dir: lib/resources/generated/strings
+  arb_dir: lib/resources/strings
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  remove_alpha_ios: true
+  image_path: 'assets/pngs/app_icon.png'
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/pngs/
+    - assets/svgs/
+
+  fonts:
+    - family: SFPro
+      fonts:
+        - asset: assets/fonts/SF-Pro-Display-Semibold.otf
+          weight: 600
+        - asset: assets/fonts/SF-Pro-Display-Medium.otf
+          weight: 500
+        - asset: assets/fonts/SF-Pro-Display-Regular.otf
+          weight: 400
+        - asset: assets/fonts/SF-Pro-Italic.ttf
+          weight: 400
