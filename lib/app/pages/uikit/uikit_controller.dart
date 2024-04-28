@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../../../resources/resources.dart';
 import '../../routes/app_pages.dart';
 import '../../theme/theme_controller.dart';
+import 'animations/animation_sample_page.dart';
 import 'screens/color_palettes_screen.dart';
 import 'screens/component_screen.dart';
 import 'screens/elevation_screen.dart';

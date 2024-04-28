@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 
 import '../pages/home/home_controller.dart';
 import '../pages/sample/sample_controller.dart';
+import '../pages/uikit/animations/animation_sample_page.dart';
 import '../pages/uikit/uikit_controller.dart';
 import '../services/app_network_connection.dart';
 import '../theme/theme_controller.dart';
@@ -27,6 +28,10 @@ class AppPages {
       name: Routes.uikit,
       page: () => const UIKitPage(),
       binding: UIKitBinding(),
+    ),
+    GetPage(
+      name: Routes.animation,
+      page: () => const OpenContainerTransformDemo(),
     ),
   ];
 }

@@ -26,6 +26,7 @@ dependencies:
   # Components
   cupertino_icons: ^1.0.2
   flutter_slidable: ^3.1.0
+  animations: ^2.0.11
   # Data
   shared_preferences: ^2.2.0
 

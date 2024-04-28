@@ -6,4 +6,5 @@ class Routes {
   static const sample = '/sample';
   static const home = '/home';
   static const uikit = '/uikit';
+  static const animation = '/animation';
 }

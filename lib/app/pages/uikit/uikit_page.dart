@@ -26,7 +26,13 @@ class UIKitPage extends GetView<UIKitController> {
   PreferredSizeWidget createAppBar() {
     return AppBar(
       title: Text(R.strings.uiKitMaterial3),
-      actions: const [_BrightnessButton()],
+      actions: [
+        const _BrightnessButton(),
+        IconButton(
+          onPressed: () => OpenContainerTransformDemo.open(),
+          icon: const Icon(Icons.animation),
+        ),
+      ],
     );
   }
 
