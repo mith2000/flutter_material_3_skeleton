@@ -4,8 +4,10 @@
 
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_material_3_skeleton/app/components/shimmer_loader.dart';
 import 'package:get/get.dart';
 
+import '../../../components/placeholders.dart';
 import '../../../routes/app_pages.dart';
 
 const String _loremIpsumParagraph =
@@ -319,7 +321,7 @@ class _ExampleCard extends StatelessWidget {
             ),
             child: Text(
               'Lorem ipsum dolor sit amet, consectetur '
-                  'adipiscing elit, sed do eiusmod tempor.',
+              'adipiscing elit, sed do eiusmod tempor.',
               style: Theme.of(context)
                   .textTheme
                   .bodyMedium!
@@ -423,7 +425,7 @@ class _ExampleSingleTile extends StatelessWidget {
                   const SizedBox(height: 8),
                   Text(
                       'Lorem ipsum dolor sit amet, consectetur '
-                          'adipiscing elit,',
+                      'adipiscing elit,',
                       style: Theme.of(context).textTheme.bodySmall),
                 ],
               ),
@@ -458,6 +460,10 @@ class _InkWellOverlay extends StatelessWidget {
   }
 }
 
+const bannerHeight = 250.0;
+const colDivider = SizedBox(height: 20);
+const spacing = 20.0;
+
 class _DetailsPage extends StatelessWidget {
   const _DetailsPage({this.includeMarkAsDoneButton = true});
 
@@ -477,44 +483,73 @@ class _DetailsPage extends StatelessWidget {
             )
         ],
       ),
-      body: ListView(
-        children: <Widget>[
-          Container(
-            color: Colors.black38,
-            height: 250,
-            child: Padding(
-              padding: const EdgeInsets.all(70.0),
-              child: Image.asset(
-                placeHolderAsset,
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  'Title',
-                  style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                    color: Colors.black54,
-                    fontSize: 30.0,
-                  ),
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  _loremIpsumParagraph,
-                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                    color: Colors.black54,
-                    height: 1.5,
-                    fontSize: 16.0,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
+      body: ShimmerLoader(
+        loadData: fetchData,
+        buildPlaceholder: buildPlaceholders,
+        buildContent: (data) => buildContent(context, data),
       ),
+    );
+  }
+
+  Future<String> fetchData() async {
+    await Future.delayed(const Duration(seconds: 5));
+    return _loremIpsumParagraph;
+  }
+
+  Widget buildPlaceholders() {
+    return const Column(
+      children: <Widget>[
+        BoxPlaceholder(height: bannerHeight),
+        colDivider,
+        TitlePlaceholder(horizontalPadding: spacing),
+        colDivider,
+        ListTilePlaceholder(
+          lineType: ListTileType.threeLines,
+          hasLeading: false,
+          horizontalPadding: spacing,
+        ),
+      ],
+    );
+  }
+
+  Widget buildContent(BuildContext context, String content) {
+    return ListView(
+      children: <Widget>[
+        Container(
+          color: Colors.black38,
+          height: bannerHeight,
+          child: Padding(
+            padding: const EdgeInsets.all(70.0),
+            child: Image.asset(
+              placeHolderAsset,
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(spacing),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                'Title',
+                style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                      color: Colors.black54,
+                      fontSize: 30.0,
+                    ),
+              ),
+              const SizedBox(height: 10),
+              Text(
+                content,
+                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                      color: Colors.black54,
+                      height: 1.5,
+                      fontSize: 16.0,
+                    ),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
