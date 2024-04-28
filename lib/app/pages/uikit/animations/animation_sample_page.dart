@@ -4,6 +4,7 @@
 
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_material_3_skeleton/app/components/containter_transform_anim.dart';
 import 'package:flutter_material_3_skeleton/app/components/shimmer_loader.dart';
 import 'package:get/get.dart';
 
@@ -139,47 +140,59 @@ class _OpenContainerTransformDemoState
       body: ListView(
         padding: const EdgeInsets.all(8.0),
         children: <Widget>[
-          _OpenContainerWrapper(
+          ContainerTransformAnimation(
             transitionType: _transitionType,
-            closedBuilder: (BuildContext _, VoidCallback openContainer) {
+            onClosed: _showMarkedAsDoneSnackbar,
+            buildResult: (BuildContext context, VoidCallback callback) {
+              return const _DetailsPage();
+            },
+            child: (BuildContext _, VoidCallback openContainer) {
               return _ExampleCard(openContainer: openContainer);
             },
-            onClosed: _showMarkedAsDoneSnackbar,
           ),
           const SizedBox(height: 16.0),
-          _OpenContainerWrapper(
+          ContainerTransformAnimation(
             transitionType: _transitionType,
-            closedBuilder: (BuildContext _, VoidCallback openContainer) {
+            onClosed: _showMarkedAsDoneSnackbar,
+            buildResult: (BuildContext context, VoidCallback callback) {
+              return const _DetailsPage();
+            },
+            child: (BuildContext _, VoidCallback openContainer) {
               return _ExampleSingleTile(openContainer: openContainer);
             },
-            onClosed: _showMarkedAsDoneSnackbar,
           ),
           const SizedBox(height: 16.0),
           Row(
             children: <Widget>[
               Expanded(
-                child: _OpenContainerWrapper(
+                child: ContainerTransformAnimation(
                   transitionType: _transitionType,
-                  closedBuilder: (BuildContext _, VoidCallback openContainer) {
+                  onClosed: _showMarkedAsDoneSnackbar,
+                  buildResult: (BuildContext context, VoidCallback callback) {
+                    return const _DetailsPage();
+                  },
+                  child: (BuildContext _, VoidCallback openContainer) {
                     return _SmallerCard(
                       openContainer: openContainer,
                       subtitle: 'Secondary text',
                     );
                   },
-                  onClosed: _showMarkedAsDoneSnackbar,
                 ),
               ),
               const SizedBox(width: 8.0),
               Expanded(
-                child: _OpenContainerWrapper(
+                child: ContainerTransformAnimation(
                   transitionType: _transitionType,
-                  closedBuilder: (BuildContext _, VoidCallback openContainer) {
+                  onClosed: _showMarkedAsDoneSnackbar,
+                  buildResult: (BuildContext context, VoidCallback callback) {
+                    return const _DetailsPage();
+                  },
+                  child: (BuildContext _, VoidCallback openContainer) {
                     return _SmallerCard(
                       openContainer: openContainer,
                       subtitle: 'Secondary text',
                     );
                   },
-                  onClosed: _showMarkedAsDoneSnackbar,
                 ),
               ),
             ],
@@ -188,41 +201,50 @@ class _OpenContainerTransformDemoState
           Row(
             children: <Widget>[
               Expanded(
-                child: _OpenContainerWrapper(
+                child: ContainerTransformAnimation(
                   transitionType: _transitionType,
-                  closedBuilder: (BuildContext _, VoidCallback openContainer) {
+                  onClosed: _showMarkedAsDoneSnackbar,
+                  buildResult: (BuildContext context, VoidCallback callback) {
+                    return const _DetailsPage();
+                  },
+                  child: (BuildContext _, VoidCallback openContainer) {
                     return _SmallerCard(
                       openContainer: openContainer,
                       subtitle: 'Secondary',
                     );
                   },
-                  onClosed: _showMarkedAsDoneSnackbar,
                 ),
               ),
               const SizedBox(width: 8.0),
               Expanded(
-                child: _OpenContainerWrapper(
+                child: ContainerTransformAnimation(
                   transitionType: _transitionType,
-                  closedBuilder: (BuildContext _, VoidCallback openContainer) {
+                  onClosed: _showMarkedAsDoneSnackbar,
+                  buildResult: (BuildContext context, VoidCallback callback) {
+                    return const _DetailsPage();
+                  },
+                  child: (BuildContext _, VoidCallback openContainer) {
                     return _SmallerCard(
                       openContainer: openContainer,
                       subtitle: 'Secondary',
                     );
                   },
-                  onClosed: _showMarkedAsDoneSnackbar,
                 ),
               ),
               const SizedBox(width: 8.0),
               Expanded(
-                child: _OpenContainerWrapper(
+                child: ContainerTransformAnimation(
                   transitionType: _transitionType,
-                  closedBuilder: (BuildContext _, VoidCallback openContainer) {
+                  onClosed: _showMarkedAsDoneSnackbar,
+                  buildResult: (BuildContext context, VoidCallback callback) {
+                    return const _DetailsPage();
+                  },
+                  child: (BuildContext _, VoidCallback openContainer) {
                     return _SmallerCard(
                       openContainer: openContainer,
                       subtitle: 'Secondary',
                     );
                   },
-                  onClosed: _showMarkedAsDoneSnackbar,
                 ),
               ),
             ],
@@ -256,31 +278,6 @@ class _OpenContainerTransformDemoState
           );
         },
       ),
-    );
-  }
-}
-
-class _OpenContainerWrapper extends StatelessWidget {
-  const _OpenContainerWrapper({
-    required this.closedBuilder,
-    required this.transitionType,
-    required this.onClosed,
-  });
-
-  final CloseContainerBuilder closedBuilder;
-  final ContainerTransitionType transitionType;
-  final ClosedCallback<bool?> onClosed;
-
-  @override
-  Widget build(BuildContext context) {
-    return OpenContainer<bool>(
-      transitionType: transitionType,
-      openBuilder: (BuildContext context, VoidCallback _) {
-        return const _DetailsPage();
-      },
-      onClosed: onClosed,
-      tappable: false,
-      closedBuilder: closedBuilder,
     );
   }
 }
