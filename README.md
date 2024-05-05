@@ -4,8 +4,8 @@ This repository houses a **robust Flutter framework**, primarily featuring a **M
 
 ## Skeleton info
 
-![Flutter](https://img.shields.io/badge/Flutter-v3.19.0-blue?link=https%3A%2F%2Fdocs.flutter.dev%2Frelease%2Farchive%3Ftab%3Dmacos)
-![Dart](https://img.shields.io/badge/Dart-v3.3.0-blue?link=https%3A%2F%2Fdart.dev%2Fget-dart%2Farchive)
+![Flutter](https://img.shields.io/badge/Flutter-v3.19.0-blue?link=[https%3A%2F%2Fdocs.flutter.dev%2Frelease%2Farchive%3Ftab%3Dmacos](https://docs.flutter.dev/release/archive?tab=macos))
+![Dart](https://img.shields.io/badge/Dart-v3.3.0-blue?link=[https%3A%2F%2Fdart.dev%2Fget-dart%2Farchive](https://dart.dev/get-dart/archive))
 
 
 ### Android (default by Flutter 3.19.0)
