@@ -6,6 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:lottie/lottie.dart';
+
+import '../../../../resources/resources.dart';
 
 const rowDivider = SizedBox(width: 20);
 const colDivider = SizedBox(height: 12);
@@ -1673,25 +1676,63 @@ class SnackBarSection extends StatelessWidget {
       label: 'Snackbar',
       tooltipMessage:
           'Use ScaffoldMessenger.of(context).showSnackBar with SnackBar',
-      child: TextButton(
-        onPressed: () {
-          final snackBar = SnackBar(
-            behavior: SnackBarBehavior.floating,
-            width: 400.0,
-            content: const Text('This is a snackbar'),
-            action: SnackBarAction(
-              label: 'Close',
-              onPressed: () {},
-            ),
-          );
+      child: Wrap(
+        alignment: WrapAlignment.spaceEvenly,
+        children: [
+          TextButton(
+            onPressed: () {
+              final snackBar = SnackBar(
+                behavior: SnackBarBehavior.floating,
+                width: 400.0,
+                content: const Text('This is a snackbar'),
+                action: SnackBarAction(
+                  label: 'Close',
+                  onPressed: () {},
+                ),
+              );
 
-          ScaffoldMessenger.of(context).hideCurrentSnackBar();
-          ScaffoldMessenger.of(context).showSnackBar(snackBar);
-        },
-        child: const Text(
-          'Show snackbar',
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
+              ScaffoldMessenger.of(context).hideCurrentSnackBar();
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+            },
+            child: const Text(
+              'Show snackbar',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ),
+          TextButton(
+            onPressed: () {
+              final snackBar = SnackBar(
+                behavior: SnackBarBehavior.floating,
+                content: Row(
+                  children: [
+                    const Text('This is a success snackbar'),
+                    const Spacer(),
+                    Lottie.asset(
+                      R.json.animCheck.path,
+                      width: 24,
+                      height: 24,
+                      repeat: false,
+                    ),
+                  ],
+                ),
+              );
+
+              ScaffoldMessenger.of(context).hideCurrentSnackBar();
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+            },
+            child: const Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  'Show success snackbar',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                rowDivider,
+                Badge(child: Icon(Icons.fiber_new_rounded)),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -8,4 +8,5 @@ class R {
 
   static $AssetsSvgsGen svgs = Assets.svgs;
   static $AssetsPngsGen pngs = Assets.pngs;
+  static $AssetsJsonGen json = Assets.json;
 }

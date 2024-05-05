@@ -28,6 +28,7 @@ dependencies:
   flutter_slidable: ^3.1.0
   animations: ^2.0.11
   shimmer: ^3.0.0
+  lottie: ^3.1.0
   # Data
   shared_preferences: ^2.2.0
 
@@ -47,6 +48,7 @@ flutter_gen:
 
   integrations:
     flutter_svg: true
+    lottie: true
 
   fonts:
     enabled: true
@@ -70,6 +72,7 @@ flutter:
   assets:
     - assets/pngs/
     - assets/svgs/
+    - assets/json/
 
   fonts:
     - family: SFPro

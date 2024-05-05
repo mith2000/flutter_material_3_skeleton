@@ -44,9 +44,11 @@ This repository houses a **robust Flutter framework**, primarily featuring a **M
 #### Components
 
 - Basic use Material Design 3 with minimized UI Kit page
-- Flutter Slidable
+- flutter_slidable
 - flutter_svg
 - animations
+- shimmer
+- lottie
 
 #### Resources
 
