@@ -71,14 +71,14 @@ This repository houses a **robust Flutter framework**, primarily featuring a **M
 
 ## Guideline Run project
 
-### MacOs
+### Terminal
 
-- One time: `make denied` (Mac OS)
-- PreBuild: `make pre-bootstrap`, `make pub-get`, `make build-init`, `make build-resource`
+- Init Project: `make init-source` (Only 1 time)
 - Run Project: `make run-dev`
-- Every time after coding: `make all`
+- Every time after coding and/or before commit: `make all`
 
 #### For more configuring environment
+- One time: `make executable` (Mac OS)
 - PreBuild: `make pre-bootstrap`, `make pub-get`, `make build-init flavor=dev`, `make build-init flavor=prod`, `make build-runner`
 - Get Command for run: `make run flavor=dev/staging/prod` -> After running finished, copy command
 - Run Project: `cd app`, paste copied command to run with `fvm` in front. E.g: `fvm <copied-command>`

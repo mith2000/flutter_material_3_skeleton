@@ -1,4 +1,4 @@
-.PHONY: all denied pre-bootstrap pub-get build-init build-resource run-dev run-staging run-prod run-test build-apk build-aab build-ipa clean format clean upgrade help
+.PHONY: all init-source executable pre-bootstrap pub-get build-init build-resource run-dev run-staging run-prod run-test build-apk build-aab build-ipa clean format clean upgrade help
 
 all: lint format run-dev
 
@@ -15,11 +15,13 @@ help: ## This help dialog.
 	done
 
 
-# Starting this source by: denied pre-bootstrap pub-get build-init build-resource
-denied:
+init-source: executable pre-bootstrap pub-get build-init build-resource ## Starting this source by: executable pre-bootstrap pub-get build-init build-resource
+	@echo "╠ Starting source completed"
+
+executable:	## Make pre-bootstrap.sh executable
 	@cd scripts && chmod +x pre-bootstrap.sh
 
-pre-bootstrap:
+pre-bootstrap: ## Run pre-bootstrap.sh & install FVM
 	@echo "╠ Running script pre-bootstrap.sh..."
 	@cd scripts && ./pre-bootstrap.sh
 	@echo "╠ Installing FVM"
@@ -27,11 +29,11 @@ pre-bootstrap:
 	@fvm use 3.19.0 --force
 	@fvm flutter --version
 
-pub-get: clean
+pub-get: clean ## Clean and run pub get
 	@echo "╠ Flutter pub get..."
 	@fvm flutter pub get
 
-build-init: pub-get ## Init with launcher icon & splash
+build-init: ## Init with launcher icon & splash
 	@echo "╠ Creating launcher icon"
 	@fvm dart run flutter_launcher_icons
 	@echo "╠ Creating splash screen"
