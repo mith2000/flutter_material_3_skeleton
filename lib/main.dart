@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
@@ -16,7 +17,17 @@ void main() async {
   // Inject dependencies
   await DataProvider.inject();
 
+  await configSystemUI();
+
   runApp(const App());
+}
+
+Future<void> configSystemUI() async {
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    statusBarColor: Colors.white,
+    systemNavigationBarColor: Colors.white,
+  ));
 }
 
 class App extends StatelessWidget {
